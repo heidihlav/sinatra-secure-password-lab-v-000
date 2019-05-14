@@ -18,7 +18,7 @@ class ApplicationController < Sinatra::Base
 
   post "/signup" do
     # need to keep it from ssaving user if username is blank and pw is filled
-    if params[:username] == "" && params[:password] == ""
+    if params[:username] == "" || params[:password] == ""
       redirect to "/failure"
     else
       user = User.new(:username => params[:username], :password => params[:password])
